@@ -1,0 +1,81 @@
+{
+    "input": {
+        "py/object": "test_case_input.TestCaseInput",
+        "x": {
+            "py/object": "numpy.ndarray",
+            "values": "eJwNz4s/FAYAB/CTZ/rksYybcflsiYiQPs7Ij2ah5PHxDOHT4gi12fFZ40YveSTcJEPFvFbyflT3KYnGxeeu4/K6c9ydO2fcOQ3NZ5at/+D7fb6VrBORIMXa+Z0m/5aK4cd5Q8zgTkIlpZFB/3QFAlt1PQ9LJRghPqJ+6zHks7+dMSjgIpyQ133SYA7pTk42Wx0z4DVIqeVjSmgZxm09vjaIbJto0ukrdFgmVZxdr5zDZvW7ygfzg2CkOtCcqZMYq4jrdOPIcDyupmJVX4ZYaUGV52MuvOQxwbQoEWj5P6Y5egtxpETXeSJKgom2NZUSTQ6EURIuWSjGkVy6qVGQEr5/flHE3D8HR58ccf+2HBqDkRokFh/l8eqerZQJSF74sVvrJLgVupnCpUgxpBh6dqxxGasHira601koVccw8685eC8Q+/inxGh7X1q2fWcRBGbIiEtQA37RHLgTyVXCr77Ggr5nFufrAnUDJaMQaWd43P5GDj5XV+6vkGHfrz03irNWwF5ODlK1Hkc/T2Dh3iaC/QveSXKAGP4ZiWHCaCX0zJITJT6dILUYuOQXc5HpcY/1x0Um4nXyrNptR7Fjb2QgV2cO5GCqmjFvEj1utP/uH5uG1jPm8RHVZZj2ej3s6FdAqG9SO6zRAY7+pPP082E0czb+VvlJimgJqUZ/fQJq+eZVTp4cHJxRy9JeGAORqNhoqnuLn3tf3zpl+fEfc3SEnfkSqaTvTONbFxBWe/B650dvKP1Si/o/Y2CYZOS0CXioGlCy2+M4yLVsPHy9ZB5PlqLsIue7QOgdJDx1TcMJqr1mj5EEpe7x2psCJshX0w0PHejATeaZbdm5aaxObZBDth+A8nmEwipGDjPjPXZ0ryqwXGMf6eaIERpY/WpDdwa72fvWXS9LQS14uotKGIfZo5ZwytQA9JPMbx9NUuKc6plPCqaWkOay1/Ni7jIcab7eJDUOOJn1VHNxLaqbRP2dCVzsN7mSOXRIhNlCmyqe7C3sLhl8KaMtIZrAyNuIHQVhksYOm19Bw3ALcfxrAXbLHWN575bQlZK9+L2IiWxyUPD9IB6SGTcvUM4uYFX/Hr+w+yX0jO76sz70YWe7nm2qhhLG3ScK3wsWUB0scWBp1IP40MrYO2caqapXB1i9fMyGBlxzeCOD4fLhgM90OFDbQVG6lQ8h9nTfV0ZdXZBHlJheTuSj6NVv7+y0FkDwMNpVONIMLftq3ws+CoRnERhZ/jOQ1Ly2jGhnw31TkG6g9QQm1sVWFglD+NBAuhu5qIAjc/SHnmQJULlWNpgrRNnvTqE6mlJMsSSlemI+apuaEzOiZPgfGO/vEA==",
+            "shape": [
+                25,
+                5
+            ],
+            "dtype": "float64",
+            "byteorder": "<"
+        },
+        "y": {
+            "py/object": "numpy.ndarray",
+            "values": "eJwByAA3/xDT2o8/bqg/GoRsEfoc4j88IyDchk7EP1DpdUAcw74/frftQFvh1T+I2njBJIC3P3imTSGsGrg/tvvXFjLu0z+vi9B2JljvP0w3luc4ccY/YNSFDK6SkT8mavc5e23oP8jV5Ck70uk/qLdimdkp1j82h3g7N73dP6ARmC3yyuQ/gBZq5y2bqD/9VYreZl/uPyxkLoyvX+w/5jT/Knuy0D/AWjig/FePPyY2A9K13u0/rAtty4QI4D+VgKJ+lELhP0jYpvwH4+U/0NFkrg==",
+            "shape": [
+                25,
+                1
+            ],
+            "dtype": "float64",
+            "byteorder": "<"
+        },
+        "lrate": {
+            "py/object": "numpy.float64",
+            "dtype": "float64",
+            "value": 1.5
+        },
+        "weight": {
+            "py/object": "numpy.ndarray",
+            "dtype": "float64",
+            "values": [
+                [
+                    0.35702151331050547
+                ],
+                [
+                    0.914548835445338
+                ],
+                [
+                    0.6715363050303232
+                ],
+                [
+                    0.06304664839150875
+                ],
+                [
+                    0.4361352874443809
+                ]
+            ]
+        }
+    },
+    "output": {
+        "py/tuple": [
+            {
+                "py/object": "numpy.ndarray",
+                "dtype": "float64",
+                "values": [
+                    [
+                        -0.8253754786287455
+                    ],
+                    [
+                        -0.19667635133403294
+                    ],
+                    [
+                        -0.3895701500311878
+                    ],
+                    [
+                        -0.9845127274796218
+                    ],
+                    [
+                        -1.154121996864914
+                    ]
+                ]
+            },
+            {
+                "py/object": "numpy.float64",
+                "dtype": "float64",
+                "value": 0.736085527807435
+            }
+        ]
+    }
+}

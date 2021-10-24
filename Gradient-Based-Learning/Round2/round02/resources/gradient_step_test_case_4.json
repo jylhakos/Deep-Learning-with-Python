@@ -1,0 +1,75 @@
+{
+    "input": {
+        "py/object": "test_case_input.TestCaseInput",
+        "x": {
+            "py/object": "numpy.ndarray",
+            "values": "eJwBgAJ//Z6WgYxoHtQ/XjXICjZG4D/nrI7YyArtP4yxq8nO6M8/NJhRvLZD2j9I78+UeS3oP6DtFR9CSc0/6Ocpk/S0sz9m646tSYvSP3BlFi7mosQ/qlZ/ShXA7T+Yui5FH9zpP68GbPTXROQ/zH3TUQHj6z/Zrt+ArrfpP1QGqhaH4cc/nnqI49eP7D8ZIUypSkLhP58EfbyM1uk/V9lsqces7D9EL0E/K1rUP7BOtehcLLw/UPBcuvoszT/SEAHou1XbP88HaU0tLeo/lBg43RqL6z+AxU1U1nl8P1boIroKWOA/iO7go9y22j/MNxRbB27MP5gGnyh/r74/FPjzqXyb1T98VKz4UCzuP3QHwFlbr9Q/F387yu6Z4D86h52dIX/mPzjmhBi1Rdc/ZgIEvdYY7z8UzfxEXszuP/gHkn0zHdA/7LqyZevS3z8ySC8Zl0HTP1xf+5/TOtI/oPASkdjioj/ADegPjYHjP+PmpFHyFeA/0IAdQmxbqj+2tML6V9XRP2aTiZ6DEO0/ZCvkyvapzj9AtX5I6ovCP1YPlasxU98/myk20nKK7z+Mr3vJqvvOPzbLUmgiguU/soZ6GTBf6D8Y498z6GrOP0RqNl+MTec/+izDQ8KJ1z95Bu9v2TvkP29lmBngReQ/twZE8xAl4T8QC4z5Oh23P7NVmkzMuuo/hMoQHKmH1D+cDCKr1t/HP8BZ77Z64KQ/K8hNUZjo4j/ehuF0m67lP6DyBltm/JA/1+08+xBj4D/IIpRF0P3MPxt8YmhBpeQ/HGIMn6NRxj8eHZd1KRzmP9BaJJxFwNg/rdBZK7H57T9woM9KSZrBP/y44fUH1NU/8LawxpkMvT+IrUhZ",
+            "shape": [
+                20,
+                4
+            ],
+            "dtype": "float64",
+            "byteorder": "<"
+        },
+        "y": {
+            "py/object": "numpy.ndarray",
+            "values": "eJwBoABf/1ZxKhIXl+0/tHvI+ikT7D8IEtSZHYLQP2Ins9yWHuU/ib3tK68m6j//CBF+NMThP80WC8Xl8uA/uKfwDwT1zj8Yt+Q+ldW3P0exO9L9tew/0tGHhznQ7D9vPMH8XULkP+YgOwKqstU/NFWaHXNZ1j8j+2JnBzvnP0bgbJMgtew/YDeeEQNj7D+aE42PvfToP8lZZ/OFi+Q/yLjwXTKKtT/8J1Cg",
+            "shape": [
+                20,
+                1
+            ],
+            "dtype": "float64",
+            "byteorder": "<"
+        },
+        "lrate": {
+            "py/object": "numpy.float64",
+            "dtype": "float64",
+            "value": 1.0
+        },
+        "weight": {
+            "py/object": "numpy.ndarray",
+            "dtype": "float64",
+            "values": [
+                [
+                    0.9505705487759384
+                ],
+                [
+                    0.11872191680126964
+                ],
+                [
+                    0.46698429651785
+                ],
+                [
+                    0.5708358392555032
+                ]
+            ]
+        }
+    },
+    "output": {
+        "py/tuple": [
+            {
+                "py/object": "numpy.ndarray",
+                "dtype": "float64",
+                "values": [
+                    [
+                        0.21351544298745173
+                    ],
+                    [
+                        -0.20759746815889468
+                    ],
+                    [
+                        -0.026017044389545774
+                    ],
+                    [
+                        0.029039244608136117
+                    ]
+                ]
+            },
+            {
+                "py/object": "numpy.float64",
+                "dtype": "float64",
+                "value": 0.46801044097350386
+            }
+        ]
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "input": {
+        "py/object": "test_case_input.TestCaseInput",
+        "x": {
+            "py/object": "numpy.ndarray",
+            "values": "eJwBoABf/0utHxlf4+4/hbgrFtNs4z/gnCB5+KnRP0DmaiYl9tI/BFwxkXcnxT+gT1J+/QKQP6qOLYYCGds/PviWIb1F2T8uTwuggsjSP4AUwtDh1Yw/pElP+6pzyT/agOoyUMPmP+THFTceSek/XNJLLAZk4z+jEW+9QaTtP2Cmdnyf1eQ/YtFzg1lH7T/dQX4ahDPrP9ytpcLMw9w/gKsIIsxsuD81OU60",
+            "shape": [
+                20,
+                1
+            ],
+            "dtype": "float64",
+            "byteorder": "<"
+        },
+        "y": {
+            "py/object": "numpy.ndarray",
+            "values": "eJwBoABf/0zkfHp8u9c/2/xMxSVn5T/hHetmPE/lP93bjFbp6+I//gIZtwqV0T9PjOPFtPXhP9Lt9Ljfgdg/11za9kMY7z88CwtTTSrrP3O/PoJoGOc/rOFV/MA0zj8aS/NjbGPQP2B0dCG2s6Q/UM21GcC95j/AO9BAV2O8Py723NgWHtw/4LuAUO/RyT8rr4tqGKrsPxDNgzp3bN4/wcYIfloG4j99dFRo",
+            "shape": [
+                20,
+                1
+            ],
+            "dtype": "float64",
+            "byteorder": "<"
+        },
+        "lrate": {
+            "py/object": "numpy.float64",
+            "dtype": "float64",
+            "value": 1.0
+        },
+        "weight": {
+            "py/object": "numpy.float64",
+            "dtype": "float64",
+            "value": 0.01
+        }
+    },
+    "output": {
+        "py/tuple": [
+            {
+                "py/object": "numpy.float64",
+                "dtype": "float64",
+                "value": 0.4311036910990414
+            },
+            {
+                "py/object": "numpy.float64",
+                "dtype": "float64",
+                "value": 0.3117765159937277
+            }
+        ]
+    }
+}

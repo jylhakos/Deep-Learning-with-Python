@@ -1,0 +1,30 @@
+<div class="main-container">
+    <div class="title-container">
+        <h1 class="title">{{title}}</h1>
+        <h3 class="subtitle">{{subtitle}}</h3>
+
+{% for test_result in test_results %}
+         <div class="card-container">
+{% if test_result.succeeded%}
+             <div class="card card-success">
+{% else %}
+             <div class="card card-failure">
+{% endif %}
+                 <h2 class="card__title">Test Case {{loop.index}}</h2>
+                 <div class="test-input">
+                     <p>Input</p>
+                     <div class="code-block">{{test_result.test_input}}</div>
+                 </div>
+                 <div class="test-output">
+                     <p>Your Output</p>
+                     <div class="code-block">{{test_result.output}}</div>
+                 </div>
+                 <div class="test-expected-output">
+                     <p>Expected Output</p>
+                     <div class="code-block">{{test_result.expected_output}}</div>
+                 </div>
+             </div>
+         </div>
+{% endfor %}
+    </div>
+</div>

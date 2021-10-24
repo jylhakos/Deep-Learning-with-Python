@@ -1,0 +1,49 @@
+{
+    "input": {
+        "py/object": "test_case_input.TestCaseInput",
+        "x": {
+            "py/object": "numpy.ndarray",
+            "values": "eJwByAA3/4yxq8nO6M8/NJhRvLZD2j9I78+UeS3oP6DtFR9CSc0/6Ocpk/S0sz9m646tSYvSP3BlFi7mosQ/qlZ/ShXA7T+Yui5FH9zpP68GbPTXROQ/zH3TUQHj6z/Zrt+ArrfpP1QGqhaH4cc/nnqI49eP7D8ZIUypSkLhP58EfbyM1uk/V9lsqces7D9EL0E/K1rUP7BOtehcLLw/UPBcuvoszT/SEAHou1XbP88HaU0tLeo/lBg43RqL6z+AxU1U1nl8P1boIroKWOA/mD5mXQ==",
+            "shape": [
+                25,
+                1
+            ],
+            "dtype": "float64",
+            "byteorder": "<"
+        },
+        "y": {
+            "py/object": "numpy.ndarray",
+            "values": "eJwByAA3/4ju4KPctto/zDcUWwduzD+YBp8of6++PxT486l8m9U/fFSs+FAs7j90B8BZW6/UPxd/O8rumeA/OoednSF/5j845oQYtUXXP2YCBL3WGO8/FM38RF7M7j/4B5J9Mx3QP+y6smXr0t8/MkgvGZdB0z9cX/uf0zrSP6DwEpHY4qI/wA3oD42B4z/j5qRR8hXgP9CAHUJsW6o/trTC+lfV0T9mk4megxDtP2Qr5Mr2qc4/QLV+SOqLwj9WD5WrMVPfP5spNtJyiu8/TdVnEQ==",
+            "shape": [
+                25,
+                1
+            ],
+            "dtype": "float64",
+            "byteorder": "<"
+        },
+        "lrate": {
+            "py/object": "numpy.float64",
+            "dtype": "float64",
+            "value": 1.5
+        },
+        "weight": {
+            "py/object": "numpy.float64",
+            "dtype": "float64",
+            "value": 1.0
+        }
+    },
+    "output": {
+        "py/tuple": [
+            {
+                "py/object": "numpy.float64",
+                "dtype": "float64",
+                "value": 0.6235575431901041
+            },
+            {
+                "py/object": "numpy.float64",
+                "dtype": "float64",
+                "value": 0.19195966025486227
+            }
+        ]
+    }
+}
