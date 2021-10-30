@@ -300,6 +300,7 @@ training=True
 %%time
 if training:
     history = model.fit(X_train, y_train, batch_size=32,epochs=20,verbose=1,validation_data=(X_val, y_val))
+    model.save('model.h5')
 else: 
     model = tf.keras.models.load_model("model.h5")
 
