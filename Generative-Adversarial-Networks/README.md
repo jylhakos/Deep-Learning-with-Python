@@ -138,8 +138,10 @@ if training:
 ```
 
 ```
-```
+
+
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Generative-Adversarial-Networks/2.png?raw=true)
+
 ```
 
 ```
