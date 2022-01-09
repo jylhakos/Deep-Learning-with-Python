@@ -165,14 +165,19 @@ y_test = test.target
 
 **multi-class classification**
 
+
+**define classifier with sklearn LogisticRegression**
 ```
-# define classifier with sklearn LogisticRegression
 clf = LogisticRegression(random_state=0)
+```
 
-# fit classifier to training set
+**fit classifier to training set**
+```
 clf = clf.fit(X_train, y_train)
+```
 
-# get predictions for test set
+**get predictions for test set**
+```
 pred = clf.predict(X_test)
 
 score = accuracy_score(y_test, pred)
@@ -201,8 +206,10 @@ with open(embeddings_path, "rb") as f:
     vocabulary = list(embeddings.keys())
     
 print(f'The vocabulary has a total of {len(vocabulary)} words')
+```
 
-# Extract a training & validation split
+**Extract a training and validation split**
+```
 validation_split = 0.2
 num_validation_samples = int(validation_split * len(train.data))
 
@@ -215,8 +222,10 @@ val_labels = train.target[-num_validation_samples:]
 test_samples = test.data
 test_labels = test.target
 ```
-## CNN to perform document classification
 
+## Using CNN to perform document classification
+
+```
 embedding_layer = Embedding(
     num_tokens,
     embedding_dim,
@@ -231,12 +240,15 @@ x_test  = vectorizer(np.array([[s] for s in test_samples])).numpy()
 y_train = train_labels
 y_val   = val_labels
 y_test  = test_labels
+```
 
 The vocabulary size, or the number of words in the vocabulary built by Tokenizer
 
+```
 vocabulary_size = 20000
 
 print(vocabulary_size)
+```
 
 The vocabulary has a total of 20000 words
 
@@ -244,13 +256,16 @@ Each document is of length 500 tokens.
 
 The embedding vectors of length 300.
 
+```
 print(f"Training set shape: {x_train.shape}")
 print(f"Validation set shape: {x_val.shape}")
 print(f"Test set shape: {x_test.shape}")
 
 x_train_emb = embedding_layer(x_train)
+```
 
-# number of categories for classification
+**The number of categories for classification**
+```
 m = len(categories)
 
 print(m)
@@ -271,15 +286,21 @@ model = keras.Sequential([
 ])
 
 model.summary()
+```
 
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Natural-Language-Processing/3.png?raw=true)
 
+```
 training=True
+```
+**Compile the model**
 
-# Compile the model 
+``` 
 model.compile(optimizer='RMSprop', loss='sparse_categorical_crossentropy', metrics=['sparse_categorical_accuracy'])
+```
+**Training the model**
 
-# Training the model 
+```
 if training:
     history = model.fit(x_train, y_train, validation_data=(x_test, y_test), batch_size=32, epochs=20, verbose=1)
     model.save('model.h5')
@@ -287,17 +308,24 @@ else:
     model = tf.keras.models.load_model("model.h5")
 
 model = tf.keras.models.load_model("model.h5")
+
 _, test_acc = model.evaluate(x_test, y_test, verbose=0)
 print("Test accuracy {:.2f}".format(test_acc))
-
+```
 
 **An end-to-end model**
 
-# keras layer that takes a string as an input
+**keras layer that takes a string as an input**
+```
 string_input = keras.Input(shape=(1,), dtype="string")
-# vectorize string input
+```
+**vectorize string input**
+```
 x = vectorizer(string_input)
-# pass to main model
+```
+**pass the vector to main model**
+
+```
 preds = model(x)
 
 end_to_end_model = keras.Model(string_input, preds)
@@ -321,5 +349,6 @@ for axes, cfs, label in zip(ax.flatten(), cfs_matrix, train.target_names):
 
 fig.tight_layout()
 plt.show()
+```
 
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Natural-Language-Processing/4.png?raw=true)
