@@ -251,22 +251,15 @@ print(f"Training set shape after embedding layer: {x_train_emb.shape}")
 # number of categories for classification
 m = len(categories)
 
-vocabulary_size = 20000
-
-k = x_train_emb.shape[2]
-
-n = x_train_emb.shape[1]
-
-print(vocabulary_size, k, n)
-
 model = keras.Sequential([
-    layers.Embedding(input_dim=vocabulary_size, output_dim=k, input_length=n),
+    embedding_layer,
+    #layers.Embedding(input_dim=vocabulary_size, output_dim=k, input_length=n),
     layers.Conv1D(filters=128, kernel_size=5, activation="relu", name="cv1"),
     layers.MaxPool1D(pool_size=2, name="maxpool1"),
     layers.Conv1D(filters=128, kernel_size=5, activation="relu", name="cv2"),
     layers.MaxPool1D(pool_size=2, name="maxpool2"),
     layers.Conv1D(filters=128, kernel_size=5, activation="relu", name="cv3"),
-    layers.MaxPool1D(pool_size=2, name="maxpool3"),
+    layers.GlobalMaxPool1D(name="globalmaxpool"),
     layers.Dense(128, activation="relu", name="dense"),
     layers.Dropout(0.5),
     layers.Dense(m, activation='softmax', name="output")
@@ -274,6 +267,19 @@ model = keras.Sequential([
 
 model.summary()
 
+
 training=True
 
-model.compile(optimizer='RMSprop', loss='sparse_categorical_crossentropy', metrics=['acc'])
+# Compile the model 
+model.compile(optimizer='RMSprop', loss='sparse_categorical_crossentropy', metrics=['sparse_categorical_accuracy'])
+
+# Training the model 
+if training:
+    history = model.fit(x_train, y_train, validation_data=(x_test, y_test), batch_size=32, epochs=20, verbose=1)
+    model.save('model.h5')
+else: 
+    model = tf.keras.models.load_model("model.h5")
+
+model = tf.keras.models.load_model("model.h5")
+_, test_acc = model.evaluate(x_test, y_test, verbose=0)
+print("Test accuracy {:.2f}".format(test_acc))

@@ -232,12 +232,11 @@ y_train = train_labels
 y_val   = val_labels
 y_test  = test_labels
 
-
 The vocabulary size, or the number of words in the vocabulary built by Tokenizer
 
-The number of dimensions m in the embedding space represented by the Embedding layer
+vocabulary_size = 20000
 
-The length n of each padded sequence
+print(vocabulary_size)
 
 The vocabulary has a total of 20000 words
 
@@ -258,22 +257,14 @@ print(m)
 
 print(x_train_emb.shape)
 
-vocabulary_size = 20000
-
-k = x_train_emb.shape[2]
-
-n = x_train_emb.shape[1]
-
-print(vocabulary_size, k, n)
-
 model = keras.Sequential([
-    layers.Embedding(vocabulary_size, k, input_length=n),
+    embedding_layer,
     layers.Conv1D(filters=128, kernel_size=5, activation="relu", name="cv1"),
     layers.MaxPool1D(pool_size=2, name="maxpool1"),
     layers.Conv1D(filters=128, kernel_size=5, activation="relu", name="cv2"),
     layers.MaxPool1D(pool_size=2, name="maxpool2"),
     layers.Conv1D(filters=128, kernel_size=5, activation="relu", name="cv3"),
-    layers.MaxPool1D(pool_size=2, name="maxpool3"),
+    layers.GlobalMaxPool1D(name="globalmaxpool"),
     layers.Dense(128, activation="relu", name="dense"),
     layers.Dropout(0.5),
     layers.Dense(m, activation='softmax', name="output")
@@ -283,3 +274,52 @@ model.summary()
 
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Natural-Language-Processing/3.png?raw=true)
 
+training=True
+
+# Compile the model 
+model.compile(optimizer='RMSprop', loss='sparse_categorical_crossentropy', metrics=['sparse_categorical_accuracy'])
+
+# Training the model 
+if training:
+    history = model.fit(x_train, y_train, validation_data=(x_test, y_test), batch_size=32, epochs=20, verbose=1)
+    model.save('model.h5')
+else: 
+    model = tf.keras.models.load_model("model.h5")
+
+model = tf.keras.models.load_model("model.h5")
+_, test_acc = model.evaluate(x_test, y_test, verbose=0)
+print("Test accuracy {:.2f}".format(test_acc))
+
+
+**An end-to-end model**
+
+# keras layer that takes a string as an input
+string_input = keras.Input(shape=(1,), dtype="string")
+# vectorize string input
+x = vectorizer(string_input)
+# pass to main model
+preds = model(x)
+
+end_to_end_model = keras.Model(string_input, preds)
+end_to_end_model.summary()
+
+y_pred = [np.argmax(prob) for prob in end_to_end_model.predict(test.data)]
+
+score = accuracy_score(y_test, y_pred)
+print("Accuracy:   %0.3f" % score)
+
+f1 = f1_score(y_test, y_pred, average='weighted')
+print("      F1:   %0.3f" % f1)
+
+from sklearn.metrics import multilabel_confusion_matrix
+cfs_matrix = multilabel_confusion_matrix(y_test, y_pred)
+
+fig, ax = plt.subplots(2, 2, figsize=(12, 7))
+    
+for axes, cfs, label in zip(ax.flatten(), cfs_matrix, train.target_names):
+    print_confusion_matrix(cfs, axes, label, ["N", "P"])
+
+fig.tight_layout()
+plt.show()
+
+![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Natural-Language-Processing/4.png?raw=true)
