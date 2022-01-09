@@ -262,6 +262,8 @@ if training:
 ```
 
 ```
+
+```
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Generative-Adversarial-Networks/3.png?raw=true)
 
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Generative-Adversarial-Networks/4.png?raw=true)
