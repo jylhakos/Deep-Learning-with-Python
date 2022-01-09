@@ -189,7 +189,9 @@ print("      F1:   %0.3f" % f1)
 
 **The confusion matrix**
 
+```
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Natural-Language-Processing/2.png?raw=true)
+```
 
 **Document classification with word embeddings**
 
@@ -273,22 +275,35 @@ print(m)
 print(x_train_emb.shape)
 
 model = keras.Sequential([
+
     embedding_layer,
+
     layers.Conv1D(filters=128, kernel_size=5, activation="relu", name="cv1"),
+
     layers.MaxPool1D(pool_size=2, name="maxpool1"),
+
     layers.Conv1D(filters=128, kernel_size=5, activation="relu", name="cv2"),
+
     layers.MaxPool1D(pool_size=2, name="maxpool2"),
+
     layers.Conv1D(filters=128, kernel_size=5, activation="relu", name="cv3"),
+
     layers.GlobalMaxPool1D(name="globalmaxpool"),
+
     layers.Dense(128, activation="relu", name="dense"),
+
     layers.Dropout(0.5),
+
     layers.Dense(m, activation='softmax', name="output")
+
 ])
 
 model.summary()
 ```
 
+```
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Natural-Language-Processing/3.png?raw=true)
+```
 
 ```
 training=True
@@ -351,5 +366,7 @@ fig.tight_layout()
 plt.show()
 ```
 
+```
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Natural-Language-Processing/4.png?raw=true)
+```
 
