@@ -1,5 +1,7 @@
 # Generative Adversarial Networks
 
+A generative model is used in a way that takes a training set, consisting of samples drawn from a distribution pdata, and the model learns to represent an estimate of that distribution somehow. The result is a probability distribution pmodel.
+
 **Discriminator training**
 
 1. Fetch batch of real data.
@@ -50,7 +52,8 @@ generator.build(input_shape=(None,codings_size))
 generator.summary()
 ```
 
-**Combine both ANNs into one model of GAN**
+**Combine both ANNs into a model of GAN**
+
 ```
 gan = tf.keras.models.Sequential([generator, discriminator])
 
@@ -67,12 +70,12 @@ discriminator.trainable = False
 gan.compile(loss="binary_crossentropy", optimizer="rmsprop")
 
 ```
-```
-```
-![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Generative-Adversarial-Networks/1.png?raw=true)
-```
 
-Phase 1 consist of the following steps:
+![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Generative-Adversarial-Networks/1.png?raw=true)
+
+**Training discriminator and generator**
+
+Phase 1 for training discriminator consists of the following steps:
 
 1. sample random vectors of shape (batch_size, codings_size) from a normal distribution
 
@@ -84,7 +87,7 @@ Phase 1 consist of the following steps:
 
 5. use the train_on_batch(features, labels) method to train the discriminator. This method runs a single gradient update on a single batch of data. 
 
-Phase 2 consists of the following steps:
+Phase 2 for training generator consists of the following steps:
 
 1. sample random vectors of shape (batch_size, codings_size) from a normal distribution
 
@@ -137,17 +140,10 @@ if training:
 
 ```
 
-```
-
-
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Generative-Adversarial-Networks/2.png?raw=true)
 
-```
-
-```
 **MNIST dataset**
 
-```
 ```
 training=True
 
@@ -259,11 +255,7 @@ if training:
     train_gan(cv_gan, dataset, batch_size, codings_size)
 
 ```
-```
 
-```
-
-```
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Generative-Adversarial-Networks/3.png?raw=true)
 
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Generative-Adversarial-Networks/4.png?raw=true)
@@ -277,6 +269,4 @@ if training:
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Generative-Adversarial-Networks/8.png?raw=true)
 
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Generative-Adversarial-Networks/9.png?raw=true)
-
-```
 
