@@ -1,4 +1,6 @@
-# Natural Language Processing
+# Natural Language Processing (NLP)
+
+The example shows how to train a text classifier on word frequency counts using a bag-of-words model.
 
 ```
 import numpy as np
@@ -29,11 +31,10 @@ from tensorflow.keras.layers.experimental.preprocessing import TextVectorization
 
 **Bag-of-Words**
 
-```
-rng = np.random.RandomState(42)
-``` 
+The example shows how to do text classification starting from a text document.
 
 **Newsgroups**
+
 ```
 categories = [
     'alt.atheism',
@@ -43,7 +44,11 @@ categories = [
 ]
 ```
 **Load train and test data from fetch_20newsgroups**
+
 ```
+
+rng = np.random.RandomState(42)
+
 train = fetch_20newsgroups(subset='train', categories=categories, shuffle=True, random_state=rng)
 
 test = fetch_20newsgroups(subset='test', categories=categories, shuffle=True, random_state=rng)
@@ -58,15 +63,15 @@ print(f"Category: {train.target_names[0]}\n")
 print(f"Category, numeric label: {train.target[0]}")
 ```
 
-**Summary of train and test datasets**
-
 **Create a counter object from targets (category) of train and test sets**
+
 ```
 train_counter = Counter(train.target)
 test_counter =  Counter(test.target)
 ```
 
-**Create dataframe with counted n.o. files belonging to a certain category**
+**Create dataframe with counted files belonging to a certain category**
+
 ```
 cl = pd.DataFrame(data={
     'Train': { **{ train.target_names[index]: count for index, count in train_counter.items()}, 'Total': len(train.target)},
@@ -81,8 +86,12 @@ cl
 
 **Transform text to a TF-IDF-weighted document-term matrix**
 
+The vocabulary is a list of words that occurred in the text document where each word has its own index. 
+
+Tokenizer generates the dictionary of word encodings and creates vectors from sentences. 
+
 ```
-# Text document
+# Text document i.e. a collection of linguistic data
 corpus = ['this is the first document',
           'this document is the second document',
           'and this is the third one',
@@ -110,7 +119,8 @@ pipe['count'].transform(corpus).toarray()
 
 ```
 
-### A pre-processing pipeline to convert documents to vectors using bag-of-words and TF-IDF
+**A pre-processing pipeline to convert documents to vectors using bag-of-words and TF-IDF**
+
 
 ``` 
 # Remove numbers, lines like - or _ or combinations like "/|", "||/" or "////"
@@ -122,14 +132,15 @@ def preprocess_text(text):
     text = re.sub(r'\/*\|+|\/+', '', text)  
     return text
 
-'''
-Corpus pre-processing pipeline
+```
+
+**The collection of linguistic data pre-processing pipeline**
 
 The inputs to the function are:
 - list of strings (one element is a document)
 - maximum number of features (size of the vocabulary) to use  
+
 Returns a Pipeline object   
-'''
 
 ```
 def text_processing_pipeline(features=None):
@@ -140,7 +151,7 @@ def text_processing_pipeline(features=None):
 
 ```
 
-CountVectorizer
+**CountVectorizer**
 
 Scikit-learn’s CountVectorizer is used to convert a collection of text documents to a vector of term or token counts. 
 
@@ -150,9 +161,10 @@ Transform a count matrix to a normalized tf or tf-idf representation.
 
 ```
 tfidf = TfidfTransformer(smooth_idf=True,use_idf=True)
+
 ```
 
-**Use text processing pipeline to create training and test datasets**
+**Using text processing pipeline to create training and test datasets**
 
 ```
 pipeline = text_processing_pipeline(features=10000)
@@ -165,19 +177,14 @@ y_test = test.target
 
 **multi-class classification**
 
-
-**define classifier with sklearn LogisticRegression**
 ```
+# define classifier with sklearn LogisticRegression
 clf = LogisticRegression(random_state=0)
-```
 
-**fit classifier to training set**
-```
+# fit classifier to training set
 clf = clf.fit(X_train, y_train)
-```
 
-**get predictions for test set**
-```
+# get predictions for test set
 pred = clf.predict(X_test)
 
 score = accuracy_score(y_test, pred)
@@ -189,18 +196,17 @@ print("      F1:   %0.3f" % f1)
 
 **The confusion matrix**
 
-```
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Natural-Language-Processing/2.png?raw=true)
-```
 
 **Document classification with word embeddings**
 
-```
-import pickle
-from pathlib import Path
-```
+One way to represent the text is to convert sentences into embeddings vectors.
 
 ```
+import pickle
+
+from pathlib import Path
+
 embeddings_path = Path().cwd() / '..' / '..' / '..' / 'coursedata' / 'R5' / '20newsgroups_subset_vocabulary_embeddings.p'
 
 with open(embeddings_path, "rb") as f:
@@ -208,10 +214,8 @@ with open(embeddings_path, "rb") as f:
     vocabulary = list(embeddings.keys())
     
 print(f'The vocabulary has a total of {len(vocabulary)} words')
-```
 
-**Extract a training and validation split**
-```
+# Extract a training & validation split
 validation_split = 0.2
 num_validation_samples = int(validation_split * len(train.data))
 
@@ -223,9 +227,9 @@ val_labels = train.target[-num_validation_samples:]
 
 test_samples = test.data
 test_labels = test.target
-```
 
-## Using CNN to perform document classification
+```
+**Using CNN to perform document classification**
 
 ```
 embedding_layer = Embedding(
@@ -242,32 +246,26 @@ x_test  = vectorizer(np.array([[s] for s in test_samples])).numpy()
 y_train = train_labels
 y_val   = val_labels
 y_test  = test_labels
-```
 
-The vocabulary size, or the number of words in the vocabulary built by Tokenizer
+# The vocabulary size, or the number of words in the vocabulary built by Tokenizer
 
-```
 vocabulary_size = 20000
 
 print(vocabulary_size)
-```
 
-The vocabulary has a total of 20000 words
+# The vocabulary has a total of 20000 words
 
-Each document is of length 500 tokens.
+# Each document is of length 500 tokens.
 
-The embedding vectors of length 300.
+# The embedding vectors of length 300.
 
-```
 print(f"Training set shape: {x_train.shape}")
 print(f"Validation set shape: {x_val.shape}")
 print(f"Test set shape: {x_test.shape}")
 
 x_train_emb = embedding_layer(x_train)
-```
 
-**The number of categories for classification**
-```
+# Number of categories for classification
 m = len(categories)
 
 print(m)
@@ -275,47 +273,28 @@ print(m)
 print(x_train_emb.shape)
 
 model = keras.Sequential([
-
     embedding_layer,
-
     layers.Conv1D(filters=128, kernel_size=5, activation="relu", name="cv1"),
-
     layers.MaxPool1D(pool_size=2, name="maxpool1"),
-
     layers.Conv1D(filters=128, kernel_size=5, activation="relu", name="cv2"),
-
     layers.MaxPool1D(pool_size=2, name="maxpool2"),
-
     layers.Conv1D(filters=128, kernel_size=5, activation="relu", name="cv3"),
-
     layers.GlobalMaxPool1D(name="globalmaxpool"),
-
     layers.Dense(128, activation="relu", name="dense"),
-
     layers.Dropout(0.5),
-
     layers.Dense(m, activation='softmax', name="output")
-
 ])
 
 model.summary()
-```
 
-```
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Natural-Language-Processing/3.png?raw=true)
-```
 
-```
 training=True
-```
-**Compile the model**
 
-``` 
+# Compile the model 
 model.compile(optimizer='RMSprop', loss='sparse_categorical_crossentropy', metrics=['sparse_categorical_accuracy'])
-```
-**Training the model**
 
-```
+# Training the model 
 if training:
     history = model.fit(x_train, y_train, validation_data=(x_test, y_test), batch_size=32, epochs=20, verbose=1)
     model.save('model.h5')
@@ -323,24 +302,20 @@ else:
     model = tf.keras.models.load_model("model.h5")
 
 model = tf.keras.models.load_model("model.h5")
-
 _, test_acc = model.evaluate(x_test, y_test, verbose=0)
 print("Test accuracy {:.2f}".format(test_acc))
 ```
 
-**An end-to-end model**
+**An end-to-end NLP model**
 
-**keras layer that takes a string as an input**
 ```
+# Use keras layer that takes a string as an input
 string_input = keras.Input(shape=(1,), dtype="string")
-```
-**vectorize string input**
-```
-x = vectorizer(string_input)
-```
-**pass the vector to main model**
 
-```
+# Vectorize string input
+x = vectorizer(string_input)
+
+# Pass to main model
 preds = model(x)
 
 end_to_end_model = keras.Model(string_input, preds)
@@ -366,7 +341,4 @@ fig.tight_layout()
 plt.show()
 ```
 
-```
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Natural-Language-Processing/4.png?raw=true)
-```
-
