@@ -99,6 +99,7 @@ train_ds = configure_for_performance(train_ds)
 val_ds   = configure_for_performance(val_ds)
 
 test_ds  = configure_for_performance(test_ds)
+```
 
 **Data Augmentation**
 
