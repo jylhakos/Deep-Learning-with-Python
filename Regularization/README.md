@@ -14,7 +14,7 @@ We divide the dataset into smaller sets called batches and only store a single b
 
 After loading new batch of data, we update the ANN parameters (weights and bias) using one iteration of Stochastic Gradient Descent (SGD) variant.
 
-Stochastic Gradient Descent
+**Stochastic Gradient Descent**
 
 In SGD, we find out the gradient of the cost function of a single sample at each iteration instead of the sum of the gradient of the cost function of all the samples.
 
@@ -103,6 +103,7 @@ test_ds  = configure_for_performance(test_ds)
 
 **Data Augmentation**
 
+```
 The data augmentation artificially increases the training set by creating synthetic data points.
 
 One method to implement data augmentation is using the concept of data generators.
