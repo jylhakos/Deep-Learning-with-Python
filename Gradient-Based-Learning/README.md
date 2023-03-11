@@ -1,4 +1,8 @@
-# Gradient Based Optimization
+# The mathematics of optimization for Deep Learning
+
+
+
+## Gradient Based Optimization
 
 Gradient Descent (GD) minimizes the training error by incrementally improving the current guess for the optimal parameters by moving a bit into the direction of the negative gradient.
 
@@ -104,6 +108,21 @@ plt.show()
 
 **Learning Rate**
 
+***What is the Learning Rate in neural networks?***
+
+The Learning Rate (LR) is a hyperparameter that controls how quickly the model is adapted to the estimated error each time the model weights are updated.
+
+Smaller Learning Rates require more training epochs given the smaller changes made to the weights each update, whereas larger learning rates result in rapid changes and require fewer training epochs.
+
+In back-propagation, model weights are updated to reduce the error estimates of our loss function.
+
+***Learning Rate Scheduling***
+
+Constant Learning Rate: We initialize a learning rate and don’t change it during training.
+
+Learning Rate decay: We select an initial learning rate, then gradually reduce it in accordance with a scheduler.
+
+
 ```
 epochs = 100
 lrates = [0.001, 0.01, 0.1, 0.9]
@@ -175,6 +194,10 @@ test_gradient_step(gradient_step)
 
 
 **Stochastic Gradient Descent**
+
+Deep learning neural networks are trained using the Stochastic Gradient Descent (SGD) algorithm.
+
+Stochastic Gradient Descent is an optimization algorithm that estimates the error gradient for the current state of the model using examples from the training dataset, then updates the weights of the model using the back-propagation of errors algorithm.
 
 ```
 def batch(X,y,batch_size):
@@ -289,3 +312,15 @@ plt.show()
 ```
 
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Gradient-Based-Learning/sgd_batch_size.png?raw=true)
+
+
+**Optimization Algorithms**
+
+We can approximate the local minimum and global minimum of this function.
+
+![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Gradient-Based-Learning/function.png?raw=true)
+
+![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Gradient-Based-Learning/optimization.svg?raw=true)
+
+
+https://d2l.ai/chapter_optimization/index.html
