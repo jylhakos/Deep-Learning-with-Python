@@ -1,5 +1,18 @@
 # The mathematics of optimization for Deep Learning
 
+Mathematically a neural network is a composition of affine mappings, and non-linear (activation) mappings, where we alternate between an affine mapping (weights and biases) and an activation function (applied element wise).
+
+**Optimization Algorithms**
+
+For any 𝑓(𝑥) function, if the value of 𝑓(𝑥) at 𝑥 is smaller than the values of 𝑓(𝑥) at any other points in the proximity of 𝑥, then 𝑓(𝑥) could be a local minimum. 
+
+If the value of  𝑓(𝑥) at 𝑥 is the minimum of the 𝑓(𝑥) function over the entire domain, then 𝑓(𝑥) is the global minimum.
+
+We can approximate the local minimum and global minimum of the following 𝑓(𝑥)function.
+
+![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Gradient-Based-Learning/function.png?raw=true)
+
+![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Gradient-Based-Learning/optimization.svg?raw=true)
 
 
 ## Gradient Based Optimization
@@ -314,13 +327,6 @@ plt.show()
 ![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Gradient-Based-Learning/sgd_batch_size.png?raw=true)
 
 
-**Optimization Algorithms**
+***References***
 
-We can approximate the local minimum and global minimum of this function.
-
-![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Gradient-Based-Learning/function.png?raw=true)
-
-![alt text](https://github.com/jylhakos/Deep-Learning-with-Python/blob/main/Gradient-Based-Learning/optimization.svg?raw=true)
-
-
-https://d2l.ai/chapter_optimization/index.html
+Optimization Algorithms https://d2l.ai/chapter_optimization/index.html
